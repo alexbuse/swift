@@ -1,6 +1,6 @@
 import Foundation
 
-func citeste()
+func citeste(a: inout Float, b: inout Float, c: inout Float)
 {
   print("a = ")
   let s_o_a = readLine() //string, optional, variabila a
@@ -17,7 +17,9 @@ func citeste()
           if let s_c = s_o_c{
             let f_o_c = Float(s_c) //float, optional, a
             if let f_c = f_o_c{
-
+              a = f_a
+              b = f_b
+              c = f_c
             }
             else{
               print ("nu s-a putut converti c")
@@ -44,32 +46,40 @@ func citeste()
   }
 }
 
-func calculeaza()
+func calculeaza(a: Float, b: Float, c: Float, x1_re: inout Float, x1_im: inout Float, x2_re: inout Float, x2_im: inout Float)
 {
-  print("a = \(f_a) b = \(f_b) c = \(f_c)")
-  let delta = f_b * f_b - 4 * f_a * f_c
-  var x1_re, x1_im, x2_re, x2_im:Float
+  print("a = \(a) b = \(b) c = \(c)")
+  let delta = b * b - 4 * a * c
   if delta >= 0 {
-    x1_re = (-f_b - sqrt(delta)/(2 * f_a))
-    x2_re = (-f_b + sqrt(delta)/(2 * f_a))
+    x1_re = (-b - sqrt(delta)/(2 * a))
+    x2_re = (-b + sqrt(delta)/(2 * a))
     x1_im = 0
     x2_im = 0
   }
   else{
-    x1_re = -f_b/(2 * f_a)
-    x2_re = -f_b/(2 * f_a)
-    x1_im = -sqrt(-delta) / (2 * f_a)
-    x2_im = sqrt(-delta) / (2 * f_a)
+    x1_re = -b/(2 * a)
+    x2_re = -b/(2 * a)
+    x1_im = -sqrt(-delta) / (2 * a)
+    x2_im = sqrt(-delta) / (2 * a)
   }
 }
 
-func tipareste()
+func tipareste(x1_re: Float, x1_im: Float, x2_re: Float, x2_im: Float)
 {
   print("x1 = \(x1_re) + \(x1_im)i")
   print("x2 = \(x2_re) + \(x2_im)i")
 }
 
+var a, b, c: Float
+a = 1
+b = 2
+c = 1
+var x1_re, x1_im, x2_re, x2_im: Float
+x1_re = 0
+x1_im = 0
+x2_re = 0
+x2_im = 0
 
-citeste()
-calculeaza()
-tipareste()
+citeste(a:&a, b:&b, c:&c)
+calculeaza(a:a, b:b, c:c, x1_re: &x1_re, x1_im: &x1_im, x2_re: &x2_re, x2_im: &x2_im)
+tipareste(x1_re:x1_re, x1_im:x1_im, x2_re:x2_re, x2_im:x2_im)
