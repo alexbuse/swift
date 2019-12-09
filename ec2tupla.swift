@@ -50,7 +50,7 @@ func citeste()->(Float, Float, Float)
   }
 }
 
-func calculeaza(coef: (a: Float,b: Float,c: Float),x1: inout (re: Float, im: Float), x2: inout (re: Float, im: Float))
+func calculeaza(_ coef: (a: Float,b: Float,c: Float),_ x1: inout (re: Float, im: Float),_ x2: inout (re: Float, im: Float))
 {
   print("a = \(coef.a) b = \(coef.b) c = \(coef.c)")
   let delta = coef.b * coef.b - 4 * coef.a * coef.c
