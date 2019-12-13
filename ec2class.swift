@@ -23,6 +23,11 @@ class t_ec2{
     x1_re = 0; x1_im = 0; x2_re = 0; x2_im = 0
   }
 
+  deinit()//destructor
+  {
+
+  }
+
   func citeste()
   {
     print("a = ")
